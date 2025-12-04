@@ -20,7 +20,8 @@ public class Main {
 
     public boolean checkBranchStatus(String branch) {
         try {
-            GHCompare.Status status = GitHub.connect().getRepository(owner + '/' + repo).getCompare(branch, hash).getStatus();
+            GHCompare.Status status = GitHub.connect().getRepository(owner + '/' + repo).getCompare(branch,
+                    hash).status;
             return status == GHCompare.Status.identical || status == GHCompare.Status.behind;
         } catch (FileNotFoundException x) {
             // For example, that branch does not exist in this repository.
